@@ -1,0 +1,1277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 rel. 2 sp2 (x64) (http://www.altova.com) by mgalea (Ramdom Consulting LLC) -->
+<xs:schema xmlns:rri="http://www.gamingstandards.com/rri/schemas/v1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gamingstandards.com/rri/schemas/v1.0" elementFormDefault="qualified" attributeFormDefault="qualified" version="2018-05-02 v1.0">
+	<!--Simple Data Types - Main Document.-->
+	<xs:simpleType name="t_addressTypeBase">
+		<xs:annotation>
+			<xs:documentation>Address Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_home"/>
+			<xs:enumeration value="RRI_business"/>
+			<xs:enumeration value="RRI_other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_addressType">
+		<xs:annotation>
+			<xs:documentation>Address Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_addressTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_algorithmTypeBase">
+		<xs:annotation>
+			<xs:documentation>Algorithm Type- Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_HMACSHA1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_algorithmType">
+		<xs:annotation>
+			<xs:documentation>Algorithm Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_algorithmTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_awardTypeBase">
+		<xs:annotation>
+			<xs:documentation>Progressive Award Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_pool"/>
+			<xs:enumeration value="RRI_fraction"/>
+			<xs:enumeration value="RRI_fixed"/>
+			<xs:enumeration value="RRI_inKind"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_awardType">
+		<xs:annotation>
+			<xs:documentation>Progressive Award Type.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_awardTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_balanceStatusBase">
+		<xs:annotation>
+			<xs:documentation>Balance Status - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_available"/>
+			<xs:enumeration value="RRI_blocked"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_balanceStatus">
+		<xs:annotation>
+			<xs:documentation>Balance Status - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_balanceStatusBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_blockId">
+		<xs:annotation>
+			<xs:documentation>Block Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_channelTypeBase">
+		<xs:annotation>
+			<xs:documentation>Channel Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_desktop"/>
+			<xs:enumeration value="RRI_tablet"/>
+			<xs:enumeration value="RRI_mobile"/>
+			<xs:enumeration value="RRI_retail"/>
+			<xs:enumeration value="RRI_mixedReality"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_channelType">
+		<xs:annotation>
+			<xs:documentation>Channel Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_channelTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_componentId">
+		<xs:annotation>
+			<xs:documentation>Software Component Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_contributionTypeBase">
+		<xs:annotation>
+			<xs:documentation>Jackpot Contribution Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_betFraction"/>
+			<xs:enumeration value="RRI_separateBet"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_contributionType">
+		<xs:annotation>
+			<xs:documentation>Jackpot Contribution Type.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_contributionTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_controllerId">
+		<xs:annotation>
+			<xs:documentation>Jackpot Controller Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_controllerTypeBase">
+		<xs:annotation>
+			<xs:documentation>Progressive Controller Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_standard"/>
+			<xs:enumeration value="RRI_mystery"/>
+			<xs:enumeration value="RRI_hybrid"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_controllerType">
+		<xs:annotation>
+			<xs:documentation>Progressive Controller Type.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_controllerTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_countryCode">
+		<xs:annotation>
+			<xs:documentation>Country Code - ISO 3166-1 Alpha-2.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_currencyCode">
+		<xs:annotation>
+			<xs:documentation>Currency Code - ISO 4217.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_date">
+		<xs:annotation>
+			<xs:documentation>Date - RFC 3339; may be empty.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_dateTime">
+		<xs:annotation>
+			<xs:documentation>Date/time - RFC 3339; may be empty.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_description">
+		<xs:annotation>
+			<xs:documentation>128-Character Description.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_emailAddress">
+		<xs:annotation>
+			<xs:documentation>Email Address - RFC 2822.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="320"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_exceptionCode">
+		<xs:annotation>
+			<xs:documentation>Exception Code.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_exchangeRate">
+		<xs:annotation>
+			<xs:documentation>Exchange Rate.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_exclusionStatusBase">
+		<xs:annotation>
+			<xs:documentation>Exclusion Status - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_notExcluded"/>
+			<xs:enumeration value="RRI_selfExcluded"/>
+			<xs:enumeration value="RRI_regulatorExcluded"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_exclusionStatus">
+		<xs:annotation>
+			<xs:documentation>Exclusion Status - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_exclusionStatusBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_fundsTypeBase">
+		<xs:annotation>
+			<xs:documentation>Funds Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_cashable"/>
+			<xs:enumeration value="RRI_promotional"/>
+			<xs:enumeration value="RRI_nonCashable"/>
+			<xs:enumeration value="RRI_inKind"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_fundsType">
+		<xs:annotation>
+			<xs:documentation>Funds Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_fundsTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameActivityCategoryBase">
+		<xs:annotation>
+			<xs:documentation>Game Activity Category - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_open"/>
+			<xs:enumeration value="RRI_participation"/>
+			<xs:enumeration value="RRI_cancel"/>
+			<xs:enumeration value="RRI_inGame"/>
+			<xs:enumeration value="RRI_results"/>
+			<xs:enumeration value="RRI_void"/>
+			<xs:enumeration value="RRI_expire"/>
+			<xs:enumeration value="RRI_close"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameActivityCategory">
+		<xs:annotation>
+			<xs:documentation>Game Activity Category - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_gameActivityCategoryBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameCategoryBase">
+		<xs:annotation>
+			<xs:documentation>Game Category - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_fixedOdds"/>
+			<xs:enumeration value="RRI_casinoSingle"/>
+			<xs:enumeration value="RRI_casinoMulti"/>
+			<xs:enumeration value="RRI_poker"/>
+			<xs:enumeration value="RRI_parimutuel"/>
+			<xs:enumeration value="RRI_betExchange"/>
+			<xs:enumeration value="RRI_managerGame"/>
+			<xs:enumeration value="RRI_poolGame"/>
+			<xs:enumeration value="RRI_landBased"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameCategory">
+		<xs:annotation>
+			<xs:documentation>Game Category - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_gameCategoryBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameId">
+		<xs:annotation>
+			<xs:documentation>Game Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameTypeBase">
+		<xs:annotation>
+			<xs:documentation>Game Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_sports"/>
+			<xs:enumeration value="RRI_novelty"/>
+			<xs:enumeration value="RRI_egm"/>
+			<xs:enumeration value="RRI_roulette"/>
+			<xs:enumeration value="RRI_blackjack"/>
+			<xs:enumeration value="RRI_baccarat"/>
+			<xs:enumeration value="RRI_cash"/>
+			<xs:enumeration value="RRI_tournament"/>
+			<xs:enumeration value="RRI_horse"/>
+			<xs:enumeration value="RRI_dog"/>
+			<xs:enumeration value="RRI_camel"/>
+			<xs:enumeration value="RRI_tableGame"/>
+			<xs:enumeration value="RRI_fixedOdds"/>
+			<xs:enumeration value="RRI_bingo"/>
+			<xs:enumeration value="RRI_keno"/>
+			<xs:enumeration value="RRI_lottery"/>
+			<xs:enumeration value="RRI_bigWheel"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameType">
+		<xs:annotation>
+			<xs:documentation>Game Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_gameTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameVariantBase">
+		<xs:annotation>
+			<xs:documentation>Game Variant - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_spinningReel"/>
+			<xs:enumeration value="RRI_videoPoker"/>
+			<xs:enumeration value="RRI_keno"/>
+			<xs:enumeration value="RRI_rouletteFrench"/>
+			<xs:enumeration value="RRI_rouletteAmerican"/>
+			<xs:enumeration value="RRI_baccarat"/>
+			<xs:enumeration value="RRI_puntoBanco"/>
+			<xs:enumeration value="RRI_cheminDeFer"/>
+			<xs:enumeration value="RRI_banque"/>
+			<xs:enumeration value="RRI_texasHoldem"/>
+			<xs:enumeration value="RRI_omaha"/>
+			<xs:enumeration value="RRI_multiGame"/>
+			<xs:enumeration value="RRI_blackjack"/>
+			<xs:enumeration value="RRI_craps"/>
+			<xs:enumeration value="RRI_bigSix"/>
+			<xs:enumeration value="RRI_paiGow"/>
+			<xs:enumeration value="RRI_sicBo"/>
+			<xs:enumeration value="RRI_poker"/>
+			<xs:enumeration value="RRI_sports"/>
+			<xs:enumeration value="RRI_novelty"/>
+			<xs:enumeration value="RRI_lotto"/>
+			<xs:enumeration value="RRI_toto"/>
+			<xs:enumeration value="RRI_egm"/>
+			<xs:enumeration value="RRI_tournament"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameVariant">
+		<xs:annotation>
+			<xs:documentation>Game Variant - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_gameVariantBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_genderTypeBase">
+		<xs:annotation>
+			<xs:documentation>Gender Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_male"/>
+			<xs:enumeration value="RRI_female"/>
+			<xs:enumeration value="RRI_unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_genderType">
+		<xs:annotation>
+			<xs:documentation>Gender Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_genderTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_idTypeBase">
+		<xs:annotation>
+			<xs:documentation>Identification Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_cntryPassport"/>
+			<xs:enumeration value="RRI_cntryDriverLic"/>
+			<xs:enumeration value="RRI_cntryMilitary"/>
+			<xs:enumeration value="RRI_cntryId"/>
+			<xs:enumeration value="RRI_cntryOther"/>
+			<xs:enumeration value="RRI_stateDriverLic"/>
+			<xs:enumeration value="RRI_stateOther"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_idType">
+		<xs:annotation>
+			<xs:documentation>Identification Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_idTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_ituCountry">
+		<xs:annotation>
+			<xs:documentation>Phone Country Code - ITU/WTNG.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{0,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_ituNumber">
+		<xs:annotation>
+			<xs:documentation>Phone Number - ITU/WTNG.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{0,6}[0-9]{0,8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_jackpotActivityCategoryBase">
+		<xs:annotation>
+			<xs:documentation>Jackpot Activity Category - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_openJackpot"/>
+			<xs:enumeration value="RRI_closeJackpot"/>
+			<xs:enumeration value="RRI_resetJackpot"/>
+			<xs:enumeration value="RRI_adjustJackpot"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_jackpotActivityCategory">
+		<xs:annotation>
+			<xs:documentation>Jackpot Activity Category - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_jackpotActivityCategoryBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_jurisdictionCode">
+		<xs:annotation>
+			<xs:documentation>Jurisdiction Code - ISO 3166-1 Alpha-2 or ISO 3166-2.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_levelId">
+		<xs:annotation>
+			<xs:documentation>Jackpot Level Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_licenseeId">
+		<xs:annotation>
+			<xs:documentation>Licensee Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_limitPeriodBase">
+		<xs:annotation>
+			<xs:documentation>Limit Period - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_day"/>
+			<xs:enumeration value="RRI_week"/>
+			<xs:enumeration value="RRI_month"/>
+			<xs:enumeration value="RRI_quarter"/>
+			<xs:enumeration value="RRI_year"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_limitPeriod">
+		<xs:annotation>
+			<xs:documentation>Limit Period - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_limitPeriodBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_limitSourceBase">
+		<xs:annotation>
+			<xs:documentation>Limit Source - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_player"/>
+			<xs:enumeration value="RRI_regulator"/>
+			<xs:enumeration value="RRI_operator"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_limitSource">
+		<xs:annotation>
+			<xs:documentation>Limit Source - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_limitSourceBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_limitTypeBase">
+		<xs:annotation>
+			<xs:documentation>Limit Type - Base Enumberations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_deposit"/>
+			<xs:enumeration value="RRI_participation"/>
+			<xs:enumeration value="RRI_loss"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_limitType">
+		<xs:annotation>
+			<xs:documentation>Limit Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_limitTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_mfgCode">
+		<xs:annotation>
+			<xs:documentation>Manufacturer Code.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z0-9]{0,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_money">
+		<xs:annotation>
+			<xs:documentation>Monetary Value; major unit of the currency and minor unit of the currency separated by a period (.).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_nodeId">
+		<xs:annotation>
+			<xs:documentation>Network Node Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_odds">
+		<xs:annotation>
+			<xs:documentation>Odds (1000:1 is expressed as 1000).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_partitionId">
+		<xs:annotation>
+			<xs:documentation>Partition Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_paytableId">
+		<xs:annotation>
+			<xs:documentation>Paytable Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_percent">
+		<xs:annotation>
+			<xs:documentation>Percentage (87.45% is expressed as 87.45).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_period">
+		<xs:annotation>
+			<xs:documentation>Period; day or month.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_date rri:t_yearMonth"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_phoneTypeBase">
+		<xs:annotation>
+			<xs:documentation>Phone Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_home"/>
+			<xs:enumeration value="RRI_business"/>
+			<xs:enumeration value="RRI_mobile"/>
+			<xs:enumeration value="RRI_other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_phoneType">
+		<xs:annotation>
+			<xs:documentation>Phone Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_phoneTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_pjsId">
+		<xs:annotation>
+			<xs:documentation>Progressive Jackpot Server Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_playerActivityCategoryBase">
+		<xs:annotation>
+			<xs:documentation>Player Activity Category - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_open"/>
+			<xs:enumeration value="RRI_close"/>
+			<xs:enumeration value="RRI_deposit"/>
+			<xs:enumeration value="RRI_withdrawal"/>
+			<xs:enumeration value="RRI_adjustment"/>
+			<xs:enumeration value="RRI_transfer"/>
+			<xs:enumeration value="RRI_promotion"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_playerActivityCategory">
+		<xs:annotation>
+			<xs:documentation>Player Activity Category - Extensibsle.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_playerActivityCategoryBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_playerId">
+		<xs:annotation>
+			<xs:documentation>Player Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_playerStatusBase">
+		<xs:annotation>
+			<xs:documentation>Player Status - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_active"/>
+			<xs:enumeration value="RRI_dormant"/>
+			<xs:enumeration value="RRI_closed"/>
+			<xs:enumeration value="RRI_suspended"/>
+			<xs:enumeration value="RRI_selfExcluded"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_playerStatus">
+		<xs:annotation>
+			<xs:documentation>Player Status - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_playerStatusBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_postCode">
+		<xs:annotation>
+			<xs:documentation>Postal Code.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_quantity">
+		<xs:annotation>
+			<xs:documentation>Quantity.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_reportTypeBase">
+		<xs:annotation>
+			<xs:documentation>Report Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_registrations"/>
+			<xs:enumeration value="RRI_players"/>
+			<xs:enumeration value="RRI_playerActivity"/>
+			<xs:enumeration value="RRI_playerBalances"/>
+			<xs:enumeration value="RRI_supplierConfigs"/>
+			<xs:enumeration value="RRI_gameConfigs"/>
+			<xs:enumeration value="RRI_jackpotConfigs"/>
+			<xs:enumeration value="RRI_gameSummary"/>
+			<xs:enumeration value="RRI_playerSummary"/>
+			<xs:enumeration value="RRI_jackpotSummary"/>
+			<xs:enumeration value="RRI_commissionSummary"/>
+			<xs:enumeration value="RRI_gameFundsInPlay"/>
+			<xs:enumeration value="RRI_playerFundsInPlay"/>
+			<xs:enumeration value="RRI_jackpotFundsInPlay"/>
+			<xs:enumeration value="RRI_commissionFundsInPlay"/>
+			<xs:enumeration value="RRI_gameResults"/>
+			<xs:enumeration value="RRI_gameActivity"/>
+			<xs:enumeration value="RRI_jackpotBalances"/>
+			<xs:enumeration value="RRI_jackpotIntervals"/>
+			<xs:enumeration value="RRI_jackpotActivity"/>
+			<xs:enumeration value="RRI_locationConfigs"/>
+			<xs:enumeration value="RRI_accountingModelConfigs"/>
+			<xs:enumeration value="RRI_subGameConfigs"/>
+			<xs:enumeration value="RRI_landBasedEvent"/>
+			<xs:enumeration value="RRI_landBasedInterval"/>
+			<xs:enumeration value="RRI_landBasedSummary"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_reportType">
+		<xs:annotation>
+			<xs:documentation>Report Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_reportTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_requestId">
+		<xs:annotation>
+			<xs:documentation>Request Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_responseId">
+		<xs:annotation>
+			<xs:documentation>Response Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_specialId">
+		<xs:annotation>
+			<xs:documentation>Special Request Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_stateProvCode">
+		<xs:annotation>
+			<xs:documentation>State/Province Code - ISO-3166-2 - second part only.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_supplierId">
+		<xs:annotation>
+			<xs:documentation>Supplier Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_terminalId">
+		<xs:annotation>
+			<xs:documentation>Terminal Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_themeId">
+		<xs:annotation>
+			<xs:documentation>Theme Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_transCategoryBase">
+		<xs:annotation>
+			<xs:documentation>Transaction Category - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_wager"/>
+			<xs:enumeration value="RRI_win"/>
+			<xs:enumeration value="RRI_progWin"/>
+			<xs:enumeration value="RRI_bonusWin"/>
+			<xs:enumeration value="RRI_buyIn"/>
+			<xs:enumeration value="RRI_addOn"/>
+			<xs:enumeration value="RRI_rebuy"/>
+			<xs:enumeration value="RRI_cashOut"/>
+			<xs:enumeration value="RRI_tournamentWin"/>
+			<xs:enumeration value="RRI_poolWager"/>
+			<xs:enumeration value="RRI_poolWin"/>
+			<xs:enumeration value="RRI_rake"/>
+			<xs:enumeration value="RRI_fee"/>
+			<xs:enumeration value="RRI_deposit"/>
+			<xs:enumeration value="RRI_withdrawal"/>
+			<xs:enumeration value="RRI_adjustment"/>
+			<xs:enumeration value="RRI_transferIn"/>
+			<xs:enumeration value="RRI_transferOut"/>
+			<xs:enumeration value="RRI_promotion"/>
+			<xs:enumeration value="RRI_contribution"/>
+			<xs:enumeration value="RRI_jackpotReset"/>
+			<xs:enumeration value="RRI_jackpotAdjust"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_transCategory">
+		<xs:annotation>
+			<xs:documentation>Transaction Category - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_transCategoryBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_transTypeBase">
+		<xs:annotation>
+			<xs:documentation>Transaction Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_debit"/>
+			<xs:enumeration value="RRI_credit"/>
+			<xs:enumeration value="RRI_noEffect"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_transType">
+		<xs:annotation>
+			<xs:documentation>Transaction Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_transTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_uniqueId32">
+		<xs:annotation>
+			<xs:documentation>Unique Identifier - 32 Characters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z0-9]{3}_[ -~]{1,28}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_UUID">
+		<xs:annotation>
+			<xs:documentation>Universally Unique Identifier - ISO 9834-8 - 36 Characters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_version">
+		<xs:annotation>
+			<xs:documentation>Version.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_yearMonth">
+		<xs:annotation>
+			<xs:documentation>Year-Month.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{4}-[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Simple Data Types - Annex.-->
+	<xs:simpleType name="t_actionTypeBase">
+		<xs:annotation>
+			<xs:documentation>Action Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_call"/>
+			<xs:enumeration value="RRI_check"/>
+			<xs:enumeration value="RRI_allIn"/>
+			<xs:enumeration value="RRI_raise"/>
+			<xs:enumeration value="RRI_fold"/>
+			<xs:enumeration value="RRI_bet"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_actionType">
+		<xs:annotation>
+			<xs:documentation>Action Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_actionTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_betTypeBase">
+		<xs:annotation>
+			<xs:documentation>Bet Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_simple"/>
+			<xs:enumeration value="RRI_combination"/>
+			<xs:enumeration value="RRI_xy"/>
+			<xs:enumeration value="RRI_trixie"/>
+			<xs:enumeration value="RRI_patent"/>
+			<xs:enumeration value="RRI_yankee"/>
+			<xs:enumeration value="RRI_lucky15"/>
+			<xs:enumeration value="RRI_canadian"/>
+			<xs:enumeration value="RRI_lucky31"/>
+			<xs:enumeration value="RRI_heinz"/>
+			<xs:enumeration value="RRI_lucky63"/>
+			<xs:enumeration value="RRI_superHeinz"/>
+			<xs:enumeration value="RRI_goliath"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_betType">
+		<xs:annotation>
+			<xs:documentation>Bet Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_betTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_card">
+		<xs:annotation>
+			<xs:documentation>Card.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(([1-9]|10)|(J|Q|K))(S|H|D|C)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_pokerTypeBase">
+		<xs:annotation>
+			<xs:documentation>Poker Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_THPL"/>
+			<xs:enumeration value="RRI_THNL"/>
+			<xs:enumeration value="RRI_THL"/>
+			<xs:enumeration value="RRI_OHPL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_pokerType">
+		<xs:annotation>
+			<xs:documentation>Poker Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_pokerTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameGroupId">
+		<xs:annotation>
+			<xs:documentation>Game Group Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_gameSessionId">
+		<xs:annotation>
+			<xs:documentation>Game Session Identifier.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_ratingTypeBase">
+		<xs:annotation>
+			<xs:documentation>Rating Type - Base Enumerations.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="rri:t_uniqueId32">
+			<xs:enumeration value="RRI_decimal"/>
+			<xs:enumeration value="RRI_fractional"/>
+			<xs:enumeration value="RRI_us"/>
+			<xs:enumeration value="RRI_hongKong"/>
+			<xs:enumeration value="RRI_indonesian"/>
+			<xs:enumeration value="RRI_malaysian"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="t_ratingType">
+		<xs:annotation>
+			<xs:documentation>Rating Type - Extensible.</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="rri:t_ratingTypeBase rri:t_uniqueId32"/>
+	</xs:simpleType>
+	<!--Global Complex Identifiers.-->
+	<xs:complexType name="c_licensee">
+		<xs:annotation>
+			<xs:documentation>Licensee - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="licensee">
+		<xs:annotation>
+			<xs:documentation>Licensee.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_licensee"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_player">
+		<xs:annotation>
+			<xs:documentation>Player - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
+				<xs:attribute name="playerId" type="rri:t_playerId" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="player">
+		<xs:annotation>
+			<xs:documentation>Player.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_player"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_supplier">
+		<xs:annotation>
+			<xs:documentation>Supplier - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
+				<xs:attribute name="supplierId" type="rri:t_supplierId" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="supplier">
+		<xs:annotation>
+			<xs:documentation>Supplier.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_supplier"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_game">
+		<xs:annotation>
+			<xs:documentation>Game - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
+				<xs:attribute name="gameId" type="rri:t_gameId" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="game">
+		<xs:annotation>
+			<xs:documentation>Game.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_game"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_controller">
+		<xs:annotation>
+			<xs:documentation>Jackpot Controller - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
+				<xs:attribute name="pjsId" type="rri:t_pjsId" use="required"/>
+				<xs:attribute name="controllerId" type="rri:t_controllerId" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="controller">
+		<xs:annotation>
+			<xs:documentation>Jackpot Controller.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_controller"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!--Jackpot Controller Links.-->
+	<xs:complexType name="c_controllerLinkList">
+		<xs:annotation>
+			<xs:documentation>Jackpot Controller Link List - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseElement">
+				<xs:sequence>
+					<xs:element ref="rri:controller" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="controllerLinkList">
+		<xs:annotation>
+			<xs:documentation>Jackpot Controller Link List.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_controllerLinkList"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!--Player Account Balance.-->
+	<xs:complexType name="c_accountBalance">
+		<xs:annotation>
+			<xs:documentation>Player Account Balance - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
+				<xs:attribute name="balanceAmt" type="rri:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
+				<xs:attribute name="balanceStatus" type="rri:t_balanceStatus" use="optional" default="RRI_available"/>
+				<xs:attribute name="balanceRestrict" type="rri:t_description" use="optional" default=""/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="accountBalance">
+		<xs:annotation>
+			<xs:documentation>Player Account Balance.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_accountBalance"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_accountBalanceList">
+		<xs:annotation>
+			<xs:documentation>Player Account Balance List - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseElement">
+				<xs:sequence>
+					<xs:element ref="rri:accountBalance" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--Player Funds Movements.-->
+	<xs:complexType name="c_accountMovement">
+		<xs:annotation>
+			<xs:documentation>Account Movement - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="accountMovement">
+		<xs:annotation>
+			<xs:documentation>Account Movement.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_accountMovement"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_accountMovementList">
+		<xs:annotation>
+			<xs:documentation>Account Movement List - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseElement">
+				<xs:sequence>
+					<xs:element ref="rri:accountMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--Game Funds Movements.-->
+	<xs:complexType name="c_gameMovement">
+		<xs:annotation>
+			<xs:documentation>Game Movement - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="gameMovement">
+		<xs:annotation>
+			<xs:documentation>Game Movement.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_gameMovement"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_gameMovementList">
+		<xs:annotation>
+			<xs:documentation>Game Movement List - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseElement">
+				<xs:sequence>
+					<xs:element ref="rri:gameMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--Jackpot Funds Movements.-->
+	<xs:complexType name="c_jackpotMovement">
+		<xs:annotation>
+			<xs:documentation>Jackpot Movement - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="jackpotMovement">
+		<xs:annotation>
+			<xs:documentation>Jackpot Movement.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_jackpotMovement"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_jackpotMovementList">
+		<xs:annotation>
+			<xs:documentation>Jackpot Movement List - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseElement">
+				<xs:sequence>
+					<xs:element ref="rri:jackpotMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--Commission Funds Movements.-->
+	<xs:complexType name="c_payeeMovement">
+		<xs:annotation>
+			<xs:documentation>Payee Movement - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseExtension">
+				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="payeeMovement">
+		<xs:annotation>
+			<xs:documentation>Payee Movement.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="rri:c_payeeMovement"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="c_payeeMovementList">
+		<xs:annotation>
+			<xs:documentation>Payee Movement List - Data Type.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="rri:c_baseElement">
+				<xs:sequence>
+					<xs:element ref="rri:payeeMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--Complex Data Types for Base Elements.-->
+	<xs:complexType name="c_baseExtension">
+		<xs:annotation>
+			<xs:documentation>Base Element Data Type with Sub-Element Extension Point.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="c_baseElement">
+		<xs:annotation>
+			<xs:documentation>Base Element Data Type without Sub-Element Extension Point.</xs:documentation>
+		</xs:annotation>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<!--End of Schema.-->
+</xs:schema>
