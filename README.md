@@ -1,3 +1,3 @@
-#TC456
+# TC456
 
-GLobal Data types.
+Global Data types.
