@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2013 rel. 2 sp2 (x64) (http://www.altova.com) by mgalea (Ramdom Consulting LLC) -->
-<xs:schema xmlns:rri="http://www.gamingstandards.com/rri/schemas/v1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gamingstandards.com/rri/schemas/v1.0" elementFormDefault="qualified" attributeFormDefault="qualified" version="2018-05-02 v1.0">
+<xs:schema xmlns:tc1="http://www.gamingstandards.com/rri/schemas/v1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gamingstandards.com/rri/schemas/v1.0" elementFormDefault="qualified" attributeFormDefault="qualified" version="2018-05-02 v1.0">
 	<!--Simple Data Types - Main Document.-->
 	<xs:simpleType name="t_addressTypeBase">
 		<xs:annotation>
 			<xs:documentation>Address Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
-			<xs:enumeration value="RRI_home"/>
-			<xs:enumeration value="RRI_business"/>
-			<xs:enumeration value="RRI_other"/>
+		<xs:restriction base="tc1:t_uniqueId32">
+			<xs:enumeration value="home"/>
+			<xs:enumeration value="business"/>
+			<xs:enumeration value="other"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="t_addressType">
 		<xs:annotation>
 			<xs:documentation>Address Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_addressTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_addressTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_algorithmTypeBase">
 		<xs:annotation>
 			<xs:documentation>Algorithm Type- Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_HMACSHA1"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -30,13 +29,13 @@
 		<xs:annotation>
 			<xs:documentation>Algorithm Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_algorithmTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_algorithmTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_awardTypeBase">
 		<xs:annotation>
 			<xs:documentation>Progressive Award Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_pool"/>
 			<xs:enumeration value="RRI_fraction"/>
 			<xs:enumeration value="RRI_fixed"/>
@@ -47,13 +46,13 @@
 		<xs:annotation>
 			<xs:documentation>Progressive Award Type.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_awardTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_awardTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_balanceStatusBase">
 		<xs:annotation>
 			<xs:documentation>Balance Status - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_available"/>
 			<xs:enumeration value="RRI_blocked"/>
 		</xs:restriction>
@@ -62,7 +61,7 @@
 		<xs:annotation>
 			<xs:documentation>Balance Status - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_balanceStatusBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_balanceStatusBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_blockId">
 		<xs:annotation>
@@ -76,7 +75,7 @@
 		<xs:annotation>
 			<xs:documentation>Channel Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_desktop"/>
 			<xs:enumeration value="RRI_tablet"/>
 			<xs:enumeration value="RRI_mobile"/>
@@ -88,7 +87,7 @@
 		<xs:annotation>
 			<xs:documentation>Channel Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_channelTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_channelTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_componentId">
 		<xs:annotation>
@@ -102,7 +101,7 @@
 		<xs:annotation>
 			<xs:documentation>Jackpot Contribution Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_betFraction"/>
 			<xs:enumeration value="RRI_separateBet"/>
 		</xs:restriction>
@@ -111,7 +110,7 @@
 		<xs:annotation>
 			<xs:documentation>Jackpot Contribution Type.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_contributionTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_contributionTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_controllerId">
 		<xs:annotation>
@@ -125,7 +124,7 @@
 		<xs:annotation>
 			<xs:documentation>Progressive Controller Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_standard"/>
 			<xs:enumeration value="RRI_mystery"/>
 			<xs:enumeration value="RRI_hybrid"/>
@@ -135,7 +134,7 @@
 		<xs:annotation>
 			<xs:documentation>Progressive Controller Type.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_controllerTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_controllerTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_countryCode">
 		<xs:annotation>
@@ -202,7 +201,7 @@
 		<xs:annotation>
 			<xs:documentation>Exclusion Status - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_notExcluded"/>
 			<xs:enumeration value="RRI_selfExcluded"/>
 			<xs:enumeration value="RRI_regulatorExcluded"/>
@@ -212,13 +211,13 @@
 		<xs:annotation>
 			<xs:documentation>Exclusion Status - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_exclusionStatusBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_exclusionStatusBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_fundsTypeBase">
 		<xs:annotation>
 			<xs:documentation>Funds Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_cashable"/>
 			<xs:enumeration value="RRI_promotional"/>
 			<xs:enumeration value="RRI_nonCashable"/>
@@ -229,13 +228,13 @@
 		<xs:annotation>
 			<xs:documentation>Funds Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_fundsTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_fundsTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_gameActivityCategoryBase">
 		<xs:annotation>
 			<xs:documentation>Game Activity Category - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_open"/>
 			<xs:enumeration value="RRI_participation"/>
 			<xs:enumeration value="RRI_cancel"/>
@@ -250,13 +249,13 @@
 		<xs:annotation>
 			<xs:documentation>Game Activity Category - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_gameActivityCategoryBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_gameActivityCategoryBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_gameCategoryBase">
 		<xs:annotation>
 			<xs:documentation>Game Category - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_fixedOdds"/>
 			<xs:enumeration value="RRI_casinoSingle"/>
 			<xs:enumeration value="RRI_casinoMulti"/>
@@ -272,7 +271,7 @@
 		<xs:annotation>
 			<xs:documentation>Game Category - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_gameCategoryBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_gameCategoryBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_gameId">
 		<xs:annotation>
@@ -286,7 +285,7 @@
 		<xs:annotation>
 			<xs:documentation>Game Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_sports"/>
 			<xs:enumeration value="RRI_novelty"/>
 			<xs:enumeration value="RRI_egm"/>
@@ -310,13 +309,13 @@
 		<xs:annotation>
 			<xs:documentation>Game Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_gameTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_gameTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_gameVariantBase">
 		<xs:annotation>
 			<xs:documentation>Game Variant - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_spinningReel"/>
 			<xs:enumeration value="RRI_videoPoker"/>
 			<xs:enumeration value="RRI_keno"/>
@@ -347,13 +346,13 @@
 		<xs:annotation>
 			<xs:documentation>Game Variant - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_gameVariantBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_gameVariantBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_genderTypeBase">
 		<xs:annotation>
 			<xs:documentation>Gender Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_male"/>
 			<xs:enumeration value="RRI_female"/>
 			<xs:enumeration value="RRI_unknown"/>
@@ -363,13 +362,13 @@
 		<xs:annotation>
 			<xs:documentation>Gender Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_genderTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_genderTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_idTypeBase">
 		<xs:annotation>
 			<xs:documentation>Identification Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_cntryPassport"/>
 			<xs:enumeration value="RRI_cntryDriverLic"/>
 			<xs:enumeration value="RRI_cntryMilitary"/>
@@ -383,7 +382,7 @@
 		<xs:annotation>
 			<xs:documentation>Identification Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_idTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_idTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_ituCountry">
 		<xs:annotation>
@@ -405,7 +404,7 @@
 		<xs:annotation>
 			<xs:documentation>Jackpot Activity Category - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_openJackpot"/>
 			<xs:enumeration value="RRI_closeJackpot"/>
 			<xs:enumeration value="RRI_resetJackpot"/>
@@ -416,7 +415,7 @@
 		<xs:annotation>
 			<xs:documentation>Jackpot Activity Category - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_jackpotActivityCategoryBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_jackpotActivityCategoryBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_jurisdictionCode">
 		<xs:annotation>
@@ -446,7 +445,7 @@
 		<xs:annotation>
 			<xs:documentation>Limit Period - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_day"/>
 			<xs:enumeration value="RRI_week"/>
 			<xs:enumeration value="RRI_month"/>
@@ -458,13 +457,13 @@
 		<xs:annotation>
 			<xs:documentation>Limit Period - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_limitPeriodBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_limitPeriodBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_limitSourceBase">
 		<xs:annotation>
 			<xs:documentation>Limit Source - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_player"/>
 			<xs:enumeration value="RRI_regulator"/>
 			<xs:enumeration value="RRI_operator"/>
@@ -474,13 +473,13 @@
 		<xs:annotation>
 			<xs:documentation>Limit Source - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_limitSourceBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_limitSourceBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_limitTypeBase">
 		<xs:annotation>
 			<xs:documentation>Limit Type - Base Enumberations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_deposit"/>
 			<xs:enumeration value="RRI_participation"/>
 			<xs:enumeration value="RRI_loss"/>
@@ -490,7 +489,7 @@
 		<xs:annotation>
 			<xs:documentation>Limit Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_limitTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_limitTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_mfgCode">
 		<xs:annotation>
@@ -536,7 +535,7 @@
 		<xs:annotation>
 			<xs:documentation>Paytable Identifier.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32"/>
+		<xs:restriction base="tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_percent">
 		<xs:annotation>
@@ -551,13 +550,13 @@
 		<xs:annotation>
 			<xs:documentation>Period; day or month.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_date rri:t_yearMonth"/>
+		<xs:union memberTypes="tc1:t_date tc1:t_yearMonth"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_phoneTypeBase">
 		<xs:annotation>
 			<xs:documentation>Phone Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_home"/>
 			<xs:enumeration value="RRI_business"/>
 			<xs:enumeration value="RRI_mobile"/>
@@ -568,7 +567,7 @@
 		<xs:annotation>
 			<xs:documentation>Phone Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_phoneTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_phoneTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_pjsId">
 		<xs:annotation>
@@ -582,7 +581,7 @@
 		<xs:annotation>
 			<xs:documentation>Player Activity Category - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_open"/>
 			<xs:enumeration value="RRI_close"/>
 			<xs:enumeration value="RRI_deposit"/>
@@ -596,7 +595,7 @@
 		<xs:annotation>
 			<xs:documentation>Player Activity Category - Extensibsle.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_playerActivityCategoryBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_playerActivityCategoryBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_playerId">
 		<xs:annotation>
@@ -610,7 +609,7 @@
 		<xs:annotation>
 			<xs:documentation>Player Status - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_active"/>
 			<xs:enumeration value="RRI_dormant"/>
 			<xs:enumeration value="RRI_closed"/>
@@ -622,7 +621,7 @@
 		<xs:annotation>
 			<xs:documentation>Player Status - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_playerStatusBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_playerStatusBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_postCode">
 		<xs:annotation>
@@ -642,7 +641,7 @@
 		<xs:annotation>
 			<xs:documentation>Report Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_registrations"/>
 			<xs:enumeration value="RRI_players"/>
 			<xs:enumeration value="RRI_playerActivity"/>
@@ -675,7 +674,7 @@
 		<xs:annotation>
 			<xs:documentation>Report Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_reportTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_reportTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_requestId">
 		<xs:annotation>
@@ -729,13 +728,13 @@
 		<xs:annotation>
 			<xs:documentation>Theme Identifier.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32"/>
+		<xs:restriction base="tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_transCategoryBase">
 		<xs:annotation>
 			<xs:documentation>Transaction Category - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_wager"/>
 			<xs:enumeration value="RRI_win"/>
 			<xs:enumeration value="RRI_progWin"/>
@@ -764,13 +763,13 @@
 		<xs:annotation>
 			<xs:documentation>Transaction Category - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_transCategoryBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_transCategoryBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_transTypeBase">
 		<xs:annotation>
 			<xs:documentation>Transaction Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_debit"/>
 			<xs:enumeration value="RRI_credit"/>
 			<xs:enumeration value="RRI_noEffect"/>
@@ -780,7 +779,7 @@
 		<xs:annotation>
 			<xs:documentation>Transaction Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_transTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_transTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_uniqueId32">
 		<xs:annotation>
@@ -819,7 +818,7 @@
 		<xs:annotation>
 			<xs:documentation>Action Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_call"/>
 			<xs:enumeration value="RRI_check"/>
 			<xs:enumeration value="RRI_allIn"/>
@@ -832,13 +831,13 @@
 		<xs:annotation>
 			<xs:documentation>Action Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_actionTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_actionTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_betTypeBase">
 		<xs:annotation>
 			<xs:documentation>Bet Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_simple"/>
 			<xs:enumeration value="RRI_combination"/>
 			<xs:enumeration value="RRI_xy"/>
@@ -858,7 +857,7 @@
 		<xs:annotation>
 			<xs:documentation>Bet Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_betTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_betTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_card">
 		<xs:annotation>
@@ -872,7 +871,7 @@
 		<xs:annotation>
 			<xs:documentation>Poker Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_THPL"/>
 			<xs:enumeration value="RRI_THNL"/>
 			<xs:enumeration value="RRI_THL"/>
@@ -883,7 +882,7 @@
 		<xs:annotation>
 			<xs:documentation>Poker Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_pokerTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_pokerTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<xs:simpleType name="t_gameGroupId">
 		<xs:annotation>
@@ -905,7 +904,7 @@
 		<xs:annotation>
 			<xs:documentation>Rating Type - Base Enumerations.</xs:documentation>
 		</xs:annotation>
-		<xs:restriction base="rri:t_uniqueId32">
+		<xs:restriction base="tc1:t_uniqueId32">
 			<xs:enumeration value="RRI_decimal"/>
 			<xs:enumeration value="RRI_fractional"/>
 			<xs:enumeration value="RRI_us"/>
@@ -918,7 +917,7 @@
 		<xs:annotation>
 			<xs:documentation>Rating Type - Extensible.</xs:documentation>
 		</xs:annotation>
-		<xs:union memberTypes="rri:t_ratingTypeBase rri:t_uniqueId32"/>
+		<xs:union memberTypes="tc1:t_ratingTypeBase tc1:t_uniqueId32"/>
 	</xs:simpleType>
 	<!--Global Complex Identifiers.-->
 	<xs:complexType name="c_licensee">
@@ -926,9 +925,9 @@
 			<xs:documentation>Licensee - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
-				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="tc1:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="tc1:t_licenseeId" use="required"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -938,7 +937,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_licensee"/>
+				<xs:extension base="tc1:c_licensee"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -947,10 +946,10 @@
 			<xs:documentation>Player - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
-				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
-				<xs:attribute name="playerId" type="rri:t_playerId" use="required"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="tc1:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="tc1:t_licenseeId" use="required"/>
+				<xs:attribute name="playerId" type="tc1:t_playerId" use="required"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -960,7 +959,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_player"/>
+				<xs:extension base="tc1:c_player"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -969,10 +968,10 @@
 			<xs:documentation>Supplier - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
-				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
-				<xs:attribute name="supplierId" type="rri:t_supplierId" use="required"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="tc1:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="tc1:t_licenseeId" use="required"/>
+				<xs:attribute name="supplierId" type="tc1:t_supplierId" use="required"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -982,7 +981,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_supplier"/>
+				<xs:extension base="tc1:c_supplier"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -991,10 +990,10 @@
 			<xs:documentation>Game - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
-				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
-				<xs:attribute name="gameId" type="rri:t_gameId" use="required"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="tc1:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="tc1:t_licenseeId" use="required"/>
+				<xs:attribute name="gameId" type="tc1:t_gameId" use="required"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1004,7 +1003,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_game"/>
+				<xs:extension base="tc1:c_game"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1013,11 +1012,11 @@
 			<xs:documentation>Jackpot Controller - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="jurisdictionCode" type="rri:t_jurisdictionCode" use="required"/>
-				<xs:attribute name="licenseeId" type="rri:t_licenseeId" use="required"/>
-				<xs:attribute name="pjsId" type="rri:t_pjsId" use="required"/>
-				<xs:attribute name="controllerId" type="rri:t_controllerId" use="required"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="jurisdictionCode" type="tc1:t_jurisdictionCode" use="required"/>
+				<xs:attribute name="licenseeId" type="tc1:t_licenseeId" use="required"/>
+				<xs:attribute name="pjsId" type="tc1:t_pjsId" use="required"/>
+				<xs:attribute name="controllerId" type="tc1:t_controllerId" use="required"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1027,7 +1026,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_controller"/>
+				<xs:extension base="tc1:c_controller"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1037,9 +1036,9 @@
 			<xs:documentation>Jackpot Controller Link List - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseElement">
+			<xs:extension base="tc1:c_baseElement">
 				<xs:sequence>
-					<xs:element ref="rri:controller" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tc1:controller" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
@@ -1051,7 +1050,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_controllerLinkList"/>
+				<xs:extension base="tc1:c_controllerLinkList"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1061,12 +1060,12 @@
 			<xs:documentation>Player Account Balance - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
-				<xs:attribute name="balanceAmt" type="rri:t_money" use="required"/>
-				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
-				<xs:attribute name="balanceStatus" type="rri:t_balanceStatus" use="optional" default="RRI_available"/>
-				<xs:attribute name="balanceRestrict" type="rri:t_description" use="optional" default=""/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="fundsType" type="tc1:t_fundsType" use="required"/>
+				<xs:attribute name="balanceAmt" type="tc1:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="tc1:t_currencyCode" use="required"/>
+				<xs:attribute name="balanceStatus" type="tc1:t_balanceStatus" use="optional" default="RRI_available"/>
+				<xs:attribute name="balanceRestrict" type="tc1:t_description" use="optional" default=""/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1076,7 +1075,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_accountBalance"/>
+				<xs:extension base="tc1:c_accountBalance"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1085,9 +1084,9 @@
 			<xs:documentation>Player Account Balance List - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseElement">
+			<xs:extension base="tc1:c_baseElement">
 				<xs:sequence>
-					<xs:element ref="rri:accountBalance" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tc1:accountBalance" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
@@ -1099,15 +1098,15 @@
 			<xs:documentation>Account Movement - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
-				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
-				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
-				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
-				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
-				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
-				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
-				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="fundsType" type="tc1:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="tc1:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="tc1:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="tc1:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="tc1:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="tc1:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="tc1:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="tc1:t_exchangeRate" use="optional" default="0"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1117,7 +1116,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_accountMovement"/>
+				<xs:extension base="tc1:c_accountMovement"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1126,9 +1125,9 @@
 			<xs:documentation>Account Movement List - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseElement">
+			<xs:extension base="tc1:c_baseElement">
 				<xs:sequence>
-					<xs:element ref="rri:accountMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tc1:accountMovement" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
@@ -1140,15 +1139,15 @@
 			<xs:documentation>Game Movement - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
-				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
-				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
-				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
-				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
-				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
-				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
-				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="fundsType" type="tc1:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="tc1:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="tc1:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="tc1:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="tc1:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="tc1:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="tc1:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="tc1:t_exchangeRate" use="optional" default="0"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1158,7 +1157,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_gameMovement"/>
+				<xs:extension base="tc1:c_gameMovement"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1167,9 +1166,9 @@
 			<xs:documentation>Game Movement List - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseElement">
+			<xs:extension base="tc1:c_baseElement">
 				<xs:sequence>
-					<xs:element ref="rri:gameMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tc1:gameMovement" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
@@ -1181,15 +1180,15 @@
 			<xs:documentation>Jackpot Movement - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
-				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
-				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
-				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
-				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
-				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
-				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
-				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="fundsType" type="tc1:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="tc1:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="tc1:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="tc1:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="tc1:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="tc1:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="tc1:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="tc1:t_exchangeRate" use="optional" default="0"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1199,7 +1198,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_jackpotMovement"/>
+				<xs:extension base="tc1:c_jackpotMovement"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1208,9 +1207,9 @@
 			<xs:documentation>Jackpot Movement List - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseElement">
+			<xs:extension base="tc1:c_baseElement">
 				<xs:sequence>
-					<xs:element ref="rri:jackpotMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tc1:jackpotMovement" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
@@ -1222,15 +1221,15 @@
 			<xs:documentation>Payee Movement - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseExtension">
-				<xs:attribute name="fundsType" type="rri:t_fundsType" use="required"/>
-				<xs:attribute name="transCategory" type="rri:t_transCategory" use="required"/>
-				<xs:attribute name="transType" type="rri:t_transType" use="required"/>
-				<xs:attribute name="transAmt" type="rri:t_money" use="required"/>
-				<xs:attribute name="currencyCode" type="rri:t_currencyCode" use="required"/>
-				<xs:attribute name="foreignAmt" type="rri:t_money" use="optional" default="0"/>
-				<xs:attribute name="foreignCode" type="rri:t_currencyCode" use="optional" default="XXX"/>
-				<xs:attribute name="exchangeRate" type="rri:t_exchangeRate" use="optional" default="0"/>
+			<xs:extension base="tc1:c_baseExtension">
+				<xs:attribute name="fundsType" type="tc1:t_fundsType" use="required"/>
+				<xs:attribute name="transCategory" type="tc1:t_transCategory" use="required"/>
+				<xs:attribute name="transType" type="tc1:t_transType" use="required"/>
+				<xs:attribute name="transAmt" type="tc1:t_money" use="required"/>
+				<xs:attribute name="currencyCode" type="tc1:t_currencyCode" use="required"/>
+				<xs:attribute name="foreignAmt" type="tc1:t_money" use="optional" default="0"/>
+				<xs:attribute name="foreignCode" type="tc1:t_currencyCode" use="optional" default="XXX"/>
+				<xs:attribute name="exchangeRate" type="tc1:t_exchangeRate" use="optional" default="0"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1240,7 +1239,7 @@
 		</xs:annotation>
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="rri:c_payeeMovement"/>
+				<xs:extension base="tc1:c_payeeMovement"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
@@ -1249,9 +1248,9 @@
 			<xs:documentation>Payee Movement List - Data Type.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="rri:c_baseElement">
+			<xs:extension base="tc1:c_baseElement">
 				<xs:sequence>
-					<xs:element ref="rri:payeeMovement" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tc1:payeeMovement" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
